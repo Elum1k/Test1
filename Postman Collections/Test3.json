@@ -1,0 +1,105 @@
+{
+  "info": {
+    "_postman_id": "d5a493dc-c4bb-4f00-9935-48d75b705d15",
+    "name": "Test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Retrieve and store all species that have participated in the first movie of Star Wars “A New Hope\".",
+      "_postman_id": "f93a87d0-9940-4b44-9fb4-a1e1bc145e92",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "\n  query Root{\n    film(id: \"ZmlsbXM6MQ==\") {\n      title  \n      releaseDate\n        title\n        characterConnection {\n          characters {\n            species {\n              classification\n            }\n          }\n        }\n    }\n  }",
+            "variables": ""
+          },
+          "options": {
+            "graphql": {}
+          }
+        },
+        "url": "https://swapi.apis.guru/graphiql",
+        "description": "Retrieve and store all species that have participated in the first movie of\nStar Wars “A New Hope\"."
+      },
+      "response": []
+    },
+    {
+      "name": " Obtain “name”, “birthYear”, “homeWorld”, “eyeColor” for the person, which is “Droid”",
+      "_postman_id": "a325684e-8996-48ca-a522-bdaa14ece5b4",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query($id: ID) {\n  species(id: $id) {\n    name\n    personConnection{\n      people{\n        name\n        eyeColor\n        birthYear\n      }\n    }\n    homeworld{\n      name\n    }\n    \n      }\n    }",
+            "variables": "{\n    \"id\": \"c3BlY2llczoy\"\n}"
+          },
+          "options": {
+            "graphql": {}
+          }
+        },
+        "url": "https://swapi.apis.guru/graphiql"
+      },
+      "response": []
+    },
+    {
+      "name": "Obtain the totalCount of all people that have participated in the movie and the unique “id”, “name” and “gender” for each of them.",
+      "_postman_id": "2faa1158-6ca4-4b8a-92c5-40325630ed10",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query Film($id: ID) {\n  film(id: $id) {\n    title\n    characterConnection{\n      totalCount\n      characters{\n        name\n        id\n        gender\n      }\n    }\n    \n  }\n}",
+            "variables": "{\n  \"id\": \"ZmlsbXM6MQ==\"\n}"
+          },
+          "options": {
+            "graphql": {}
+          }
+        },
+        "url": "https://swapi.apis.guru/graphiql"
+      },
+      "response": []
+    },
+    {
+      "name": "Using the information received by previous request, obtain the “name”, “birthyear”, “homeWorld”, “eyeColor”, starshipName for the person with unique id = 4.",
+      "_postman_id": "49eb394f-8e47-4828-ab9e-cf87f8e7ccb6",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "{\nperson(personID: 4) {\n  name\n  homeworld{\n    name\n  }\n  birthYear\n  eyeColor\n  starshipConnection{\n    starships{\n      name\n    }\n  } \n  }\n  }",
+            "variables": ""
+          },
+          "options": {
+            "graphql": {}
+          }
+        },
+        "url": "https://swapi.apis.guru/graphiql"
+      },
+      "response": []
+    }
+  ]
+}
