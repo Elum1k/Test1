@@ -88,19 +88,6 @@
         "url": "https://swapi.apis.guru/graphiql"
       },
       "response": []
-    },
-    {
-      "name": "Test01",
-      "id": "e58f1b0a-6f7b-400e-99ed-e59cfb8d11f9",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": ""
-      },
-      "response": []
     }
   ]
 }
